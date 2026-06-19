@@ -1,25 +1,30 @@
 #include <stdio.h>
+#include <stdbool.h>
 
-int largestAltitude(int* gain, int gainSize) {
-    int altitude = 0;
-    int maxAltitude = 0;
-
-    for (int i = 0; i < gainSize; i++) {
-        altitude += gain[i];
-
-        if (altitude > maxAltitude) {
-            maxAltitude = altitude;
+bool areEqual(int arr1[], int arr2[], int n) {
+    for (int i = 0; i < n; i++) {
+        if (arr1[i] != arr2[i]) {
+            return false;
         }
     }
-
-    return maxAltitude;
+    return true;
 }
 
 int main() {
-    int gain[] = {-5, 1, 5, 0, -7};
-    int n = sizeof(gain) / sizeof(gain[0]);
+    int arr1[] = {1, 2, 3, 4};
+    int arr2[] = {4, 3, 2, 1};
 
-    printf("%d\n", largestAltitude(gain, n));
+    int n1 = sizeof(arr1) / sizeof(arr1[0]);
+    int n2 = sizeof(arr2) / sizeof(arr2[0]);
+
+    if (n1 != n2) {
+        printf("False\n");
+    } else {
+        if (areEqual(arr1, arr2, n1))
+            printf("True\n");
+        else
+            printf("False\n");
+    }
 
     return 0;
 }
